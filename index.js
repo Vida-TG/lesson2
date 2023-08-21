@@ -1,11 +1,9 @@
 const http = require("http")
 
-const consoleHi = (name) => {
-    console.log(`Hi ${name}`)
-}
+http.createServer(function (req, res) {
+    console.log("Server responding");
+    res.write("Tutorial MLSA");
+    res.end()
 
-const consoleHi2 = () => {
-    console.log("Hi")
-}
 
-module.exports = { consoleHi, consoleHi2 };
+}).listen(8000)
