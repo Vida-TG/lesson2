@@ -1,9 +1,7 @@
 const http = require("http")
+const {addTasks, showTasks} = require("./controller")
 
-http.createServer(function (req, res) {
-    console.log("Server responding");
-    res.write("Tutorial MLSA");
-    res.end()
+addTasks("Wash Clothes");
+addTasks("Code");
+showTasks();
 
-
-}).listen(8000)
