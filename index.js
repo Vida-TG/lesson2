@@ -1,9 +1,23 @@
-const http = require("http")
+import fetch from "node-fetch";
 
-http.createServer(function (req, res) {
-    console.log("Server responding");
-    res.write("Tutorial MLSA");
-    res.end()
+async function fetchTodo() {
+    try {
+        const data = await fetch("https://jsonplaceholder.typicode.com/todos");
+        const todos = await data.json()
+        return todos;
+    } catch(err) {
+        console.log("An error occured");
+        return null;
+    }
+}
 
+async function showTodos() {
+    const todos = await fetchTodo();
+    if(todos){
+        console.log(todos.splice(0, 5))
+    } else {
+        console.log("There is no todo")
+    }
+}
 
-}).listen(8000)
+showTodos()
